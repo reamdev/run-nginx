@@ -12,8 +12,8 @@ sistemasOpe = {
 totalParams=1
 sistema = system()
 
-if (sistema == sistemasOpe['win']):
-  if (len(argv) > 1):
+if (len(argv) > 1):
+  if (sistema == sistemasOpe['win']):
     fileRoute = path.abspath(getcwd())
     action = argv[1]
 
@@ -35,9 +35,9 @@ if (sistema == sistemasOpe['win']):
       # call([fr'{fileRoute}\scripts\nginx-start.bat'])
       restartProcess2 = Popen(['powershell.exe', fr'{fileRoute}\scripts\nginx-start.ps1'])
       restartProcess2.communicate()
+  elif (sistema == sistemasOpe['linux']):
+    print(f'Sin soporte para {sistema}')
   else:
-    print(f'El script necesita de {totalParams} parametro{"s" if totalParams>1 else ""}:\n  accion: (start, stop, restart)')
-elif (sistema == sistemasOpe['linux']):
-  print(f'Sin soporte para {sistema}')
+    print('No se pudo detectar el sistema.')
 else:
-  print('No se pudo detectar el sistema.')
+  print(f'El script necesita de {totalParams} parametro{"s" if totalParams>1 else ""}:\n  accion: (start, stop, restart)')
