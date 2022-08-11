@@ -1,16 +1,16 @@
 $nginxRun = tasklist.exe | findstr.exe "nginx.exe"
 $phpCGIRun = tasklist.exe | findstr.exe "php-cgi.exe"
 
-if ((($nginxRun -ne $null)) -or (($phpCGIRun -ne $null))) {
+if ((($null -ne $nginxRun)) -or (($null -ne $phpCGIRun))) {
   Write-Output "              Deteniendo NGINX con PHP"
 
-  if (($nginxRun -ne $null)) {
+  if (($null -ne $nginxRun)) {
     Write-Output ""
     Write-Output "Deteniendo NGINX..."
     taskkill /f /IM nginx.exe
   }
 
-  if (($phpCGIRun -ne $null)) {
+  if (($null -ne $phpCGIRun)) {
     Write-Output ""
     Write-Output "Deteniendo PHP CGI..."
     taskkill /f /IM php-cgi.exe
